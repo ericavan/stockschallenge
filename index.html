@@ -44,6 +44,9 @@
         //
         // When the button is clicked:
         // ... 1) capture input values
+        console.log("stock selector value", my_stock_selector)
+
+
         // ... 2) compile the right URL given the provided inputs
         // ... 3) fetch data from that URL
         // ... 4) crunch the data
@@ -51,12 +54,38 @@
         // ... 6) make a dataviz
         //
 
+
+        
+
+
+
         console.log("TODO: RESPOND TO BUTTON CLICKS AND CAPTURE FORM INPUTS")
 
-        var apiKey = "TODO"
-        var symbol = "TODO"
+        var apiKey = document.getElementById("my-api-key")
+        var symbol = document.getElementById("my-stock-selector")
+
+
+
+
+
+
         var requestUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=" + symbol + "&apikey=" + apiKey
         console.log("REQUEST URL:", requestUrl)
+
+        console.log("THIS WILL BE LOGGED BEFORE THE DATA IS FETCHED")
+
+        fetch(requestUrl)
+            .then(response => response.json())
+            .then(stockData => {
+                console.log("STOCKDATA", stockData)
+                //console.log("DOWNLOAD DATE:", stockData["downloadDate"])
+                //console.log("NUMBER OF STUDENTS:", stockData["students"].length)
+                // etc...
+            }).catch(function(err){
+                console.error("OOPS", err)
+                alert("OOPS, please check your inputs and try again!")
+            })
+
 
         console.log("TODO: FETCH DATA")
 
